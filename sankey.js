@@ -23,7 +23,7 @@ fetch("data.json")
     const sankey = d3.sankey()
       .nodeId(d => d.name)
       .nodeWidth(18)
-      .nodePadding(30)
+      .nodePadding(24)
       .extent([[1, 1], [width - 1, height - 6]]);
 
     const graph = sankey({
@@ -124,7 +124,7 @@ fetch("data.json")
           ? d.x1 + 8
           : d.x0 - 8
       )
-      .attr("y", d => (d.y0 + d.y1) / 2 + 16)   // push value below icon
+      .attr("y", d => (d.y0 + d.y1) / 2 + 10)   // push value below icon
       .attr("dy", "0.35em")
       .attr("text-anchor", d =>
         d.x0 < width / 2 ? "start" : "end"
@@ -153,6 +153,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

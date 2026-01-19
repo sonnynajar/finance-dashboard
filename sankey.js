@@ -95,16 +95,19 @@ fetch("data.json")
       .selectAll("text")
       .data(graph.nodes)
       .join("text")
-      .attr("x", d => (d.x0 + d.x1) / 2)
+      .attr("x", d =>
+        d.x0 < width / 2
+          ? d.x1 + 8     // left-side nodes → icon to the right
+          : d.x0 - 8     // right-side nodes → icon to the left
+      )
       .attr("y", d => (d.y0 + d.y1) / 2)
-      .attr("text-anchor", "middle")
-      .attr("dominant-baseline", "middle")
-      .style("font-size", d => {
-        const height = d.y1 - d.y0;
-        return Math.min(24, Math.max(14, height * 0.4)) + "px";
-      })
+      .attr("dy", "0.35em")
+      .attr("text-anchor", d =>
+        d.x0 < width / 2 ? "start" : "end"
+      )
+      .style("font-size", "18px")
       .text(d => icons[d.name] || "❓")
-      .style("pointer-events", "none"); // IMPORTANT
+      .style("pointer-events", "none");
 
     svg.append("g")
       .attr("fill", "none")
@@ -124,6 +127,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

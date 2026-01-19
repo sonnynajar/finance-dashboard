@@ -15,7 +15,7 @@ fetch("data.json")
     }));
 
     const width = document.getElementById("sankey").clientWidth;
-    const height = 420;
+    const height = 500;
 
     const svg = d3.select("#sankey")
       .attr("viewBox", [0, 0, width, height]);
@@ -67,7 +67,7 @@ fetch("data.json")
         .style("opacity", 1)
         .html(text)
         .style("left", x + 12 + "px")
-        .style("top", y + 12 + "px");
+        .style("top", y + 12 - 32 "px");
     }
     
     function hideTooltip() {
@@ -131,6 +131,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

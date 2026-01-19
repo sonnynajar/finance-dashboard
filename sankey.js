@@ -109,7 +109,7 @@ fetch("data.json")
       .attr("text-anchor", d =>
         d.x0 < width / 2 ? "start" : "end"
       )
-      .style("font-size", "16px")
+      .style("font-size", "14px")
       .text(d => icons[d.name] || "❓")
       .style("pointer-events", "none");
 
@@ -128,7 +128,7 @@ fetch("data.json")
       .attr("text-anchor", d =>
         d.x0 < width / 2 ? "start" : "end"
       )
-      .style("font-size", "14px")
+      .style("font-size", "12px")
       .style("fill", "#334155")
       .text(d => `$${d.value.toLocaleString()}`)
       .style("pointer-events", "none");
@@ -152,6 +152,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

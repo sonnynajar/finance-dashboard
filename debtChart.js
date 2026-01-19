@@ -3,19 +3,74 @@ const pointLabelPlugin = {
   afterDatasetsDraw(chart, args, options) {
     const { ctx } = chart;
 
+    const drawnLabels = []; // store previous label positions
+
     chart.data.datasets.forEach((dataset, datasetIndex) => {
       const meta = chart.getDatasetMeta(datasetIndex);
 
       meta.data.forEach((point, index) => {
         const value = dataset.data[index];
+        const text = String(value);
 
         ctx.save();
-        ctx.fillStyle = options.color || "#000";
         ctx.font = options.font || "12px sans-serif";
+
+        // Measure text
+        const paddingX = 6;
+        const paddingY = 3;
+        const textWidth = ctx.measureText(text).width;
+        const textHeight = 12;
+
+        let x = point.x;
+        let y = point.y - 10;
+
+        // --- Prevent overlap ---
+        let collision = true;
+        while (collision) {
+          collision = false;
+
+          for (const prev of drawnLabels) {
+            const tooClose =
+              Math.abs(y - prev.y) < textHeight + paddingY * 2 &&
+              Math.abs(x - prev.x) < textWidth;
+
+            if (tooClose) {
+              y -= textHeight + 6; // push upward
+              collision = true;
+              break;
+            }
+          }
+        }
+
+        // Save final position
+        drawnLabels.push({ x, y });
+
+        // Draw background
+        const radius = 4;
+        const rectX = x - textWidth / 2 - paddingX;
+        const rectY = y - textHeight - paddingY;
+        const rectWidth = textWidth + paddingX * 2;
+        const rectHeight = textHeight + paddingY * 2;
+
+        ctx.fillStyle = options.backgroundColor || "rgba(255,255,255,0.85)";
+        ctx.beginPath();
+        ctx.moveTo(rectX + radius, rectY);
+        ctx.lineTo(rectX + rectWidth - radius, rectY);
+        ctx.quadraticCurveTo(rectX + rectWidth, rectY, rectX + rectWidth, rectY + radius);
+        ctx.lineTo(rectX + rectWidth, rectY + rectHeight - radius);
+        ctx.quadraticCurveTo(rectX + rectWidth, rectY + rectHeight, rectX + rectWidth - radius, rectY + rectHeight);
+        ctx.lineTo(rectX + radius, rectY + rectHeight);
+        ctx.quadraticCurveTo(rectX, rectY + rectHeight, rectX, rectY + rectHeight - radius);
+        ctx.lineTo(rectX, rectY + radius);
+        ctx.quadraticCurveTo(rectX, rectY, rectX + radius, rectY);
+        ctx.fill();
+
+        // Draw text
+        ctx.fillStyle = options.color || "#000";
         ctx.textAlign = "center";
         ctx.textBaseline = "bottom";
+        ctx.fillText(text, x, y);
 
-        ctx.fillText(value, point.x, point.y - 6);
         ctx.restore();
       });
     });
@@ -65,7 +120,8 @@ fetch("data.json")
           },
           pointLabels: {
             color: "#334155",
-            font: "12px sans-serif"
+            font: "12px sans-serif",
+            backgroundColor: "rgba(255,255,255,0.85)"
           }
         },
         scales: {
@@ -76,3 +132,4 @@ fetch("data.json")
       }
     });
   });
+

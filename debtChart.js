@@ -3,17 +3,24 @@ const pointLabelPlugin = {
   afterDatasetsDraw(chart, args, options) {
     const { ctx } = chart;
 
-    const drawnLabels = []; // store previous label positions
+    const drawnLabels = []; // track previous label positions
 
     chart.data.datasets.forEach((dataset, datasetIndex) => {
       const meta = chart.getDatasetMeta(datasetIndex);
 
       meta.data.forEach((point, index) => {
         const value = dataset.data[index];
+
+        // Skip zero values
+        if (value === 0) return;
+
         const text = String(value);
 
         ctx.save();
         ctx.font = options.font || "12px sans-serif";
+
+        // Use dataset border color for label text
+        const labelColor = dataset.borderColor || "#000";
 
         // Measure text
         const paddingX = 6;
@@ -42,10 +49,9 @@ const pointLabelPlugin = {
           }
         }
 
-        // Save final position
         drawnLabels.push({ x, y });
 
-        // Draw background
+        // Draw background pill
         const radius = 4;
         const rectX = x - textWidth / 2 - paddingX;
         const rectY = y - textHeight - paddingY;
@@ -66,7 +72,7 @@ const pointLabelPlugin = {
         ctx.fill();
 
         // Draw text
-        ctx.fillStyle = options.color || "#000";
+        ctx.fillStyle = labelColor;
         ctx.textAlign = "center";
         ctx.textBaseline = "bottom";
         ctx.fillText(text, x, y);
@@ -76,6 +82,7 @@ const pointLabelPlugin = {
     });
   }
 };
+
 
 Chart.register(pointLabelPlugin);
 
@@ -132,4 +139,5 @@ fetch("data.json")
       }
     });
   });
+
 

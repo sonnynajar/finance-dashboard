@@ -21,6 +21,7 @@ fetch("data.json")
       .attr("viewBox", [0, 0, width, height]);
 
     const sankey = d3.sankey()
+      .nodeId(d => d.name)
       .nodeWidth(18)
       .nodePadding(14)
       .extent([[1, 1], [width - 1, height - 6]]);
@@ -61,3 +62,4 @@ fetch("data.json")
       .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
       .text(d => d.name);
   });
+

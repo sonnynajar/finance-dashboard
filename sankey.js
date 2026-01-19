@@ -31,6 +31,20 @@ fetch("data.json")
       links: links.map(d => Object.assign({}, d))
     });
 
+    const tooltip = d3.select("#tooltip");
+
+    function showTooltip(event, text) {
+      tooltip
+        .style("opacity", 1)
+        .html(text)
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY + 10 + "px");
+    }
+    
+    function hideTooltip() {
+      tooltip.style("opacity", 0);
+    }
+
     svg.append("g")
       .selectAll("rect")
       .data(graph.nodes)
@@ -62,4 +76,5 @@ fetch("data.json")
       .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
       .text(d => d.name);
   });
+
 

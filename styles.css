@@ -29,6 +29,20 @@ svg, canvas {
   width: 100%;
 }
 
+#tooltip {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.95);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
 /* Desktop enhancement */
 @media (min-width: 900px) {
   body {
@@ -36,3 +50,4 @@ svg, canvas {
     margin: auto;
   }
 }
+

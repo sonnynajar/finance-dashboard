@@ -23,7 +23,7 @@ fetch("data.json")
     const sankey = d3.sankey()
       .nodeId(d => d.name)
       .nodeWidth(18)
-      .nodePadding(32)
+      .nodePadding(30)
       .extent([[1, 1], [width - 1, height - 6]]);
 
     const graph = sankey({
@@ -109,7 +109,7 @@ fetch("data.json")
       .attr("text-anchor", d =>
         d.x0 < width / 2 ? "start" : "end"
       )
-      .style("font-size", "14px")
+      .style("font-size", "12px")
       //.text(d => icons[d.name] || "❓")
       .text(d => d.name)
       .style("pointer-events", "none");
@@ -129,7 +129,7 @@ fetch("data.json")
       .attr("text-anchor", d =>
         d.x0 < width / 2 ? "start" : "end"
       )
-      .style("font-size", "12px")
+      .style("font-size", "10px")
       .style("fill", "#334155")
       .text(d => `$${d.value.toLocaleString()}`)
       .style("pointer-events", "none");
@@ -153,6 +153,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

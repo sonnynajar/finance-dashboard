@@ -15,7 +15,7 @@ fetch("data.json")
     }));
 
     const width = document.getElementById("sankey").clientWidth;
-    const height = 500;
+    const height = 800;
 
     const svg = d3.select("#sankey")
       .attr("viewBox", [0, 0, width, height]);
@@ -67,7 +67,7 @@ fetch("data.json")
         .style("opacity", 1)
         .html(text)
         .style("left", x + 12 + "px")
-        .style("top", y + 12 - 32 + "px");
+        .style("top", y + 12 - 64 + "px");
     }
     
     function hideTooltip() {
@@ -109,7 +109,7 @@ fetch("data.json")
       .attr("text-anchor", d =>
         d.x0 < width / 2 ? "start" : "end"
       )
-      .style("font-size", "18px")
+      .style("font-size", "16px")
       .text(d => icons[d.name] || "❓")
       .style("pointer-events", "none");
 
@@ -131,6 +131,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

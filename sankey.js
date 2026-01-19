@@ -1,11 +1,14 @@
 const tooltip = d3.select("#tooltip");
 
 function showTooltip(event, text) {
+  const x = event.clientX + window.scrollX;
+  const y = event.clientY + window.scrollY;
+
   tooltip
     .style("opacity", 1)
     .html(text)
-    .style("left", event.pageX + 10 + "px")
-    .style("top", event.pageY + 10 + "px");
+    .style("left", x + 12 + "px")
+    .style("top", y + 12 + "px");
 }
 
 function hideTooltip() {
@@ -55,6 +58,10 @@ fetch("data.json")
       .attr("width", d => d.x1 - d.x0)
       .attr("fill", "#4f46e5")
       .on("mousemove", (event, d) => {
+        console.log("Hovered:", d.name || d.value);
+        showTooltip(event, `<strong>${d.name}</strong>`);
+      })
+      .on("mousemove", (event, d) => {
         showTooltip(
           event,
           `<strong>${d.name}</strong><br>$${d.value.toLocaleString()}`
@@ -90,6 +97,7 @@ fetch("data.json")
       .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
       .text(d => d.name);
   });
+
 
 
 

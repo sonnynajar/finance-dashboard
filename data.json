@@ -5,7 +5,7 @@
       { "from": "Income", "to": "Home", "value": 3582 },
       { "from": "Home", "to": "Mortgage", "value": 3240 },
       { "from": "Home", "to": "HOA", "value": 268 },
-      { "from": "Home", "to": "Home Insurance", "value": 74 },
+      { "from": "Home", "to": "Insurance", "value": 74 },
 
       { "from": "Income", "to": "Car", "value": 88 },
       { "from": "Car", "to": "AAA", "value": 8 },
@@ -20,7 +20,7 @@
       { "from": "Bills", "to": "Gym", "value": 25 },
 
       { "from": "Income", "to": "Groceries", "value": 800 },
-      { "from": "Income", "to": "Credit Cards", "value": 500 },
+      { "from": "Income", "to": "CCs", "value": 500 },
       { "from": "Income", "to": "Savings", "value": 200 }
       
     ]
@@ -39,6 +39,7 @@
     }
   }
 }
+
 
 
 

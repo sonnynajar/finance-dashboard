@@ -57,17 +57,13 @@ fetch("data.json")
       .attr("height", d => d.y1 - d.y0)
       .attr("width", d => d.x1 - d.x0)
       .attr("fill", "#4f46e5")
-      .on("mousemove", (event, d) => {
-        console.log("Hovered:", d.name || d.value);
-        showTooltip(event, `<strong>${d.name}</strong>`);
-      })
-      .on("mousemove", (event, d) => {
+      .on("pointermove", (event, d) => {
         showTooltip(
           event,
           `<strong>${d.name}</strong><br>$${d.value.toLocaleString()}`
         );
       })
-      .on("mouseout", hideTooltip);
+      .on("pointerleave", hideTooltip);
 
     svg.append("g")
       .attr("fill", "none")
@@ -78,13 +74,14 @@ fetch("data.json")
       .attr("stroke", "#94a3b8")
       .attr("stroke-width", d => Math.max(1, d.width))
       .attr("opacity", 0.6)
-      .on("mousemove", (event, d) => {
+      .on("pointermove", (event, d) => {
         showTooltip(
           event,
           `<strong>${d.source.name} → ${d.target.name}</strong><br>$${d.value.toLocaleString()}`
         );
       })
-      .on("mouseout", hideTooltip);
+      .on("pointerleave", hideTooltip);
+
 
     svg.append("g")
       .style("font-size", "11px")
@@ -97,6 +94,7 @@ fetch("data.json")
       .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
       .text(d => d.name);
   });
+
 
 
 

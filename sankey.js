@@ -15,7 +15,7 @@ fetch("data.json")
     }));
 
     const width = document.getElementById("sankey").clientWidth;
-    const height = 600;
+    const height = 800;
 
     const svg = d3.select("#sankey")
       .attr("viewBox", [0, 0, width, height]);
@@ -23,7 +23,7 @@ fetch("data.json")
     const sankey = d3.sankey()
       .nodeId(d => d.name)
       .nodeWidth(18)
-      .nodePadding(24)
+      .nodePadding(28)
       .extent([[1, 1], [width - 1, height - 6]]);
 
     const graph = sankey({
@@ -152,5 +152,6 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 

@@ -73,8 +73,12 @@ fetch("data.json")
     function hideTooltip() {
       tooltip.style("opacity", 0);
     }
-    
-    svg.append("g")
+
+    const linkLayer = svg.append("g");
+    const nodeLayer = svg.append("g");
+    const labelLayer = svg.append("g");
+
+    nodeLayer
       .selectAll("rect")
       .data(graph.nodes)
       .join("rect")
@@ -91,7 +95,7 @@ fetch("data.json")
       })
       .on("pointerleave", hideTooltip);
 
-    svg.append("g")
+    labelLayer
       .selectAll("text")
       .data(graph.nodes)
       .join("text")
@@ -109,7 +113,7 @@ fetch("data.json")
       .text(d => icons[d.name] || "❓")
       .style("pointer-events", "none");
 
-    svg.append("g")
+    linkLayer
       .attr("fill", "none")
       .selectAll("path")
       .data(graph.links)
@@ -127,6 +131,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

@@ -30,10 +30,6 @@ svg, canvas {
 }
 
 #tooltip {
-  border: 2px solid red;
-}
-
-#tooltip {
   position: absolute;
   background: rgba(15, 23, 42, 0.95);
   color: white;
@@ -54,5 +50,6 @@ svg, canvas {
     margin: auto;
   }
 }
+
 
 

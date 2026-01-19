@@ -43,6 +43,16 @@ svg, canvas {
   white-space: nowrap;
 }
 
+#debtChart {
+  height: 320px; /* desktop default */
+}
+
+@media (max-width: 900px) {
+  #debtChart {
+    height: 520px; /* taller on mobile */
+  }
+}
+
 /* Desktop enhancement */
 @media (min-width: 900px) {
   body {
@@ -50,6 +60,7 @@ svg, canvas {
     margin: auto;
   }
 }
+
 
 
 

@@ -40,21 +40,21 @@ fetch("data.json")
       "Home Insurance": "🛡️",
     
       "Car": "🚗",
-      "Car Payment": "🚘",
-      "Car Insurance": "📄",
+      "AAA": "⚠️",
       "Gas": "⛽",
     
       "Bills": "📄",
-      "WiFi": "📶",
-      "Phone": "📱",
-      "Streaming": "🎬",
       "SDGE": "⚡",
       "Water": "💧",
+      "WiFi": "📶",
+      "Streaming": "🎬",
+      "Phone": "📱",
       "Gym": "🏋️",
     
+      "Groceries": "🛒",
       "Credit Cards": "💳",
-      "Savings": "🏦",
-      "Groceries": "🛒"
+      "Savings": "🏦"
+      
     };
 
     const tooltip = d3.select("#tooltip");
@@ -131,6 +131,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

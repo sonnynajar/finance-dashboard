@@ -32,6 +32,7 @@ fetch("data.json")
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: "bottom"
@@ -45,5 +46,6 @@ fetch("data.json")
       }
     });
   });
+
 
 

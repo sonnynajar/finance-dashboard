@@ -1,28 +1,30 @@
 {
   "cashFlow": {
-    "income": 10000,
+    "income": 5560,
     "categories": [
-      { "from": "Income", "to": "Home", "value": 3200 },
-      { "from": "Home", "to": "Mortgage", "value": 2600 },
-      { "from": "Home", "to": "HOA", "value": 300 },
-      { "from": "Home", "to": "Home Insurance", "value": 300 },
+      { "from": "Income", "to": "Home", "value": 3582 },
+      { "from": "Home", "to": "Mortgage", "value": 3090 },
+      { "from": "Home", "to": "Mortgage Insurance", "value": 150 },
+      { "from": "Home", "to": "HOA", "value": 268 },
+      { "from": "Home", "to": "Home Insurance", "value": 74 },
 
-      { "from": "Income", "to": "Car", "value": 1200 },
-      { "from": "Car", "to": "Car Payment", "value": 700 },
-      { "from": "Car", "to": "Car Insurance", "value": 300 },
-      { "from": "Car", "to": "Gas", "value": 200 },
+      { "from": "Income", "to": "Car", "value": 89.5 },
+      { "from": "Car", "to": "Car Payment", "value": 1 },
+      { "from": "Car", "to": "Car Insurance", "value": 1 },
+      { "from": "Car", "to": "AAA", "value": 7.5 },
+      { "from": "Car", "to": "Gas", "value": 80 },
 
-      { "from": "Income", "to": "Bills", "value": 900 },
-      { "from": "Bills", "to": "WiFi", "value": 90 },
-      { "from": "Bills", "to": "Phone", "value": 140 },
-      { "from": "Bills", "to": "Streaming", "value": 60 },
-      { "from": "Bills", "to": "SDGE", "value": 350 },
-      { "from": "Bills", "to": "Water", "value": 120 },
-      { "from": "Bills", "to": "Gym", "value": 140 },
+      { "from": "Income", "to": "Bills", "value": 388 },
+      { "from": "Bills", "to": "WiFi", "value": 50 },
+      { "from": "Bills", "to": "Phone", "value": 20 },
+      { "from": "Bills", "to": "Streaming", "value": 53 },
+      { "from": "Bills", "to": "SDGE", "value": 160 },
+      { "from": "Bills", "to": "Water", "value": 80 },
+      { "from": "Bills", "to": "Gym", "value": 25 },
 
-      { "from": "Income", "to": "Credit Cards", "value": 1200 },
-      { "from": "Income", "to": "Savings", "value": 1500 },
-      { "from": "Income", "to": "Groceries", "value": 900 }
+      { "from": "Income", "to": "Credit Cards", "value": 500 },
+      { "from": "Income", "to": "Savings", "value": 200 },
+      { "from": "Income", "to": "Groceries", "value": 800 }
     ]
   },
 
@@ -39,5 +41,6 @@
     }
   }
 }
+
 
 

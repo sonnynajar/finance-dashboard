@@ -21,8 +21,6 @@ fetch("data.json")
       label: "Total Debt",
       data: monthlyTotals,
       borderWidth: 3,
-      borderColor: "#000",
-      backgroundColor: "rgba(0,0,0,0.1)",
       tension: 0.3
     });
 
@@ -47,4 +45,5 @@ fetch("data.json")
       }
     });
   });
+
 

@@ -67,8 +67,6 @@ fetch("data.json")
             color: "#334155",
             font: "12px sans-serif"
           }
-      }
-
         },
         scales: {
           y: {
@@ -78,7 +76,3 @@ fetch("data.json")
       }
     });
   });
-
-
-
-

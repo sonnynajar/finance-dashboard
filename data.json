@@ -1,6 +1,6 @@
 {
   "cashFlow": {
-    "Income": 10000,
+    "income": 10000,
     "categories": [
       { "from": "Income", "to": "Home", "value": 3200 },
       { "from": "Home", "to": "Mortgage", "value": 2600 },
@@ -39,4 +39,5 @@
     }
   }
 }
+
 

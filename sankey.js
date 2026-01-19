@@ -110,7 +110,8 @@ fetch("data.json")
         d.x0 < width / 2 ? "start" : "end"
       )
       .style("font-size", "14px")
-      .text(d => icons[d.name] || "❓")
+      //.text(d => icons[d.name] || "❓")
+      .text(d => d.name)
       .style("pointer-events", "none");
 
     labelLayer
@@ -152,6 +153,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

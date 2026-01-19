@@ -1,20 +1,3 @@
-const tooltip = d3.select("#tooltip");
-
-function showTooltip(event, text) {
-  const x = event.clientX + window.scrollX;
-  const y = event.clientY + window.scrollY;
-
-  tooltip
-    .style("opacity", 1)
-    .html(text)
-    .style("left", x + 12 + "px")
-    .style("top", y + 12 + "px");
-}
-
-function hideTooltip() {
-  tooltip.style("opacity", 0);
-}
-
 fetch("data.json")
   .then(res => res.json())
   .then(data => {
@@ -48,6 +31,23 @@ fetch("data.json")
       links: links.map(d => Object.assign({}, d))
     });
 
+    const tooltip = d3.select("#tooltip");
+
+    function showTooltip(event, text) {
+      const x = event.clientX + window.scrollX;
+      const y = event.clientY + window.scrollY;
+    
+      tooltip
+        .style("opacity", 1)
+        .html(text)
+        .style("left", x + 12 + "px")
+        .style("top", y + 12 + "px");
+    }
+    
+    function hideTooltip() {
+      tooltip.style("opacity", 0);
+    }
+    
     svg.append("g")
       .selectAll("rect")
       .data(graph.nodes)
@@ -97,6 +97,7 @@ fetch("data.json")
       .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
       .text(d => d.name);
   });
+
 
 
 

@@ -23,7 +23,7 @@ fetch("data.json")
     const sankey = d3.sankey()
       .nodeId(d => d.name)
       .nodeWidth(18)
-      .nodePadding(28)
+      .nodePadding(32)
       .extent([[1, 1], [width - 1, height - 6]]);
 
     const graph = sankey({
@@ -152,6 +152,7 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 
 
 

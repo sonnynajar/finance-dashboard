@@ -31,6 +31,32 @@ fetch("data.json")
       links: links.map(d => Object.assign({}, d))
     });
 
+    const icons = {
+      "Income": "💰",
+    
+      "Home": "🏠",
+      "Mortgage": "🏡",
+      "HOA": "🏢",
+      "Home Insurance": "🛡️",
+    
+      "Car": "🚗",
+      "Car Payment": "🚘",
+      "Car Insurance": "📄",
+      "Gas": "⛽",
+    
+      "Bills": "📄",
+      "WiFi": "📶",
+      "Phone": "📱",
+      "Streaming": "🎬",
+      "SDGE": "⚡",
+      "Water": "💧",
+      "Gym": "🏋️",
+    
+      "Credit Cards": "💳",
+      "Savings": "🏦",
+      "Groceries": "🛒"
+    };
+
     const tooltip = d3.select("#tooltip");
 
     function showTooltip(event, text) {
@@ -66,6 +92,21 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
     svg.append("g")
+      .selectAll("text")
+      .data(graph.nodes)
+      .join("text")
+      .attr("x", d => (d.x0 + d.x1) / 2)
+      .attr("y", d => (d.y0 + d.y1) / 2)
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "middle")
+      .style("font-size", d => {
+        const height = d.y1 - d.y0;
+        return Math.min(24, Math.max(14, height * 0.4)) + "px";
+      })
+      .text(d => icons[d.name] || "❓")
+      .style("pointer-events", "none"); // IMPORTANT
+
+    svg.append("g")
       .attr("fill", "none")
       .selectAll("path")
       .data(graph.links)
@@ -82,18 +123,8 @@ fetch("data.json")
       })
       .on("pointerleave", hideTooltip);
 
-
-    svg.append("g")
-      .style("font-size", "11px")
-      .selectAll("text")
-      .data(graph.nodes)
-      .join("text")
-      .attr("x", d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6)
-      .attr("y", d => (d.y0 + d.y1) / 2)
-      .attr("dy", "0.35em")
-      .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
-      .text(d => d.name);
   });
+
 
 
 

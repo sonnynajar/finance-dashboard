@@ -10,6 +10,22 @@ fetch("data.json")
       tension: 0.3
     }));
 
+     // Compute monthly totals
+    const cardArrays = Object.values(data.debt.cards);
+    const monthlyTotals = data.debt.months.map((_, i) =>
+      cardArrays.reduce((sum, arr) => sum + arr[i], 0)
+    );
+
+    // Add totals dataset
+    datasets.push({
+      label: "Total Debt",
+      data: monthlyTotals,
+      borderWidth: 3,
+      borderColor: "#000",
+      backgroundColor: "rgba(0,0,0,0.1)",
+      tension: 0.3
+    });
+
     new Chart(ctx, {
       type: "line",
       data: {
@@ -31,3 +47,4 @@ fetch("data.json")
       }
     });
   });
+

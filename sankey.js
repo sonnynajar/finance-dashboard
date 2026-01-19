@@ -113,6 +113,27 @@ fetch("data.json")
       .text(d => icons[d.name] || "❓")
       .style("pointer-events", "none");
 
+    labelLayer
+      .selectAll("text.value")
+      .data(graph.nodes)
+      .join("text")
+      .attr("class", "value")
+      .attr("x", d =>
+        d.x0 < width / 2
+          ? d.x1 + 8
+          : d.x0 - 8
+      )
+      .attr("y", d => (d.y0 + d.y1) / 2 + 20)   // push value below icon
+      .attr("dy", "0.35em")
+      .attr("text-anchor", d =>
+        d.x0 < width / 2 ? "start" : "end"
+      )
+      .style("font-size", "14px")
+      .style("fill", "#334155")
+      .text(d => `$${d.value.toLocaleString()}`)
+      .style("pointer-events", "none");
+
+
     linkLayer
       .attr("fill", "none")
       .selectAll("path")
@@ -131,4 +152,5 @@ fetch("data.json")
       .on("pointerleave", hideTooltip);
 
   });
+
 

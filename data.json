@@ -1,0 +1,41 @@
+{
+  "cashFlow": {
+    "income": 10000,
+    "categories": [
+      { "from": "Income", "to": "Home", "value": 3200 },
+      { "from": "Home", "to": "Mortgage", "value": 2600 },
+      { "from": "Home", "to": "HOA", "value": 300 },
+      { "from": "Home", "to": "Home Insurance", "value": 300 },
+
+      { "from": "Income", "to": "Car", "value": 1200 },
+      { "from": "Car", "to": "Car Payment", "value": 700 },
+      { "from": "Car", "to": "Car Insurance", "value": 300 },
+      { "from": "Car", "to": "Gas", "value": 200 },
+
+      { "from": "Income", "to": "Bills", "value": 900 },
+      { "from": "Bills", "to": "WiFi", "value": 90 },
+      { "from": "Bills", "to": "Phone", "value": 140 },
+      { "from": "Bills", "to": "Streaming", "value": 60 },
+      { "from": "Bills", "to": "SDGE", "value": 350 },
+      { "from": "Bills", "to": "Water", "value": 120 },
+      { "from": "Bills", "to": "Gym", "value": 140 },
+
+      { "from": "Income", "to": "Credit Cards", "value": 1200 },
+      { "from": "Income", "to": "Savings", "value": 1500 },
+      { "from": "Income", "to": "Groceries", "value": 900 }
+    ]
+  },
+
+  "debt": {
+    "months": ["Jan", "Feb", "Mar", "Apr"],
+    "cards": {
+      "Card 1": [4200, 3900, 3600, 3300],
+      "Card 2": [3100, 2900, 2700, 2500],
+      "Card 3": [2800, 2700, 2500, 2300],
+      "Card 4": [1900, 1800, 1700, 1500],
+      "Card 5": [1600, 1500, 1400, 1300],
+      "Card 6": [1200, 1100, 1000, 900],
+      "Card 7": [900, 850, 800, 700]
+    }
+  }
+}

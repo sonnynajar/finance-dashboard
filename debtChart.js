@@ -96,20 +96,20 @@ fetch("data.json")
     buildDebtToggles();
   });
 
-const palette = [
-  "#6366f1", // indigo
-  "#22c55e", // green
-  "#f59e0b", // amber
-  "#ef4444", // red
-  "#0ea5e9", // blue
-  "#a855f7", // purple
-  "#14b8a6"  // teal
-];
-
 function initDebtChart(data) {
   const ctx = document.getElementById("debtChart");
 
-  const datasets = Object.entries(data.debt.cards).map(([name, values]) => ({
+  const palette = [
+    "#6366f1", // indigo
+    "#22c55e", // green
+    "#f59e0b", // amber
+    "#ef4444", // red
+    "#0ea5e9", // blue
+    "#a855f7", // purple
+    "#14b8a6"  // teal
+  ];
+  
+  const datasets = Object.entries(data.debt.cards).map(([name, values], i) => ({
     label: name,
     data: values,
     borderWidth: 2,
@@ -225,3 +225,4 @@ function rescaleYAxis() {
   debtChart.options.scales.y.min = min * 0.95;
   debtChart.options.scales.y.max = max * 1.05;
 }
+

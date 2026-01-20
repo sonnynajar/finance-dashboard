@@ -43,6 +43,28 @@ svg, canvas {
   white-space: nowrap;
 }
 
+.toggle-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  overflow-x: auto;
+}
+
+.toggle-bar button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5f5;
+  background: #eef2ff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.toggle-bar button.active {
+  background: #4f46e5;
+  color: white;
+}
+
 .chart-wrapper {
   height: 320px; /* desktop */
 }
@@ -65,6 +87,7 @@ svg, canvas {
     margin: auto;
   }
 }
+
 
 
 

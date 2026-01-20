@@ -1,31 +1,56 @@
 {
-  "cashFlow": {
-    "income": 5560,
-    "categories": [
-      { "from": "Income", "to": "Home", "value": 3582 },
-      { "from": "Home", "to": "Mortgage", "value": 3240 },
-      { "from": "Home", "to": "HOA", "value": 268 },
-      { "from": "Home", "to": "Insurance", "value": 74 },
-
-      { "from": "Income", "to": "Car", "value": 88 },
-      { "from": "Car", "to": "AAA", "value": 8 },
-      { "from": "Car", "to": "Gas", "value": 80 },
-
-      { "from": "Income", "to": "Bills", "value": 388 },
-      { "from": "Bills", "to": "SDGE", "value": 160 },
-      { "from": "Bills", "to": "Water", "value": 80 },
-      { "from": "Bills", "to": "WiFi", "value": 50 },
-      { "from": "Bills", "to": "Streaming", "value": 53 },
-      { "from": "Bills", "to": "Phone", "value": 20 },    
-      { "from": "Bills", "to": "Gym", "value": 25 },
-
-      { "from": "Income", "to": "Groceries", "value": 800 },
-      { "from": "Income", "to": "CCs", "value": 500 },
-      { "from": "Income", "to": "Savings", "value": 200 }
-      
+  "sankeySets": {
+    "Option A": {
+      "categories": [
+        { "from": "Income", "to": "Home", "value": 3582 },
+        { "from": "Home", "to": "Mortgage", "value": 3240 },
+        { "from": "Home", "to": "HOA", "value": 268 },
+        { "from": "Home", "to": "Insurance", "value": 74 },
+  
+        { "from": "Income", "to": "Car", "value": 88 },
+        { "from": "Car", "to": "AAA", "value": 8 },
+        { "from": "Car", "to": "Gas", "value": 80 },
+  
+        { "from": "Income", "to": "Bills", "value": 388 },
+        { "from": "Bills", "to": "SDGE", "value": 160 },
+        { "from": "Bills", "to": "Water", "value": 80 },
+        { "from": "Bills", "to": "WiFi", "value": 50 },
+        { "from": "Bills", "to": "Streaming", "value": 53 },
+        { "from": "Bills", "to": "Phone", "value": 20 },    
+        { "from": "Bills", "to": "Gym", "value": 25 },
+  
+        { "from": "Income", "to": "Groceries", "value": 800 },
+        { "from": "Income", "to": "CCs", "value": 500 },
+        { "from": "Income", "to": "Savings", "value": 200 }      
     ]
   },
-
+     "Option B": {
+      "categories": [
+        { "from": "Income", "to": "Home", "value": 3582 },
+        { "from": "Home", "to": "Mortgage", "value": 3240 },
+        { "from": "Home", "to": "HOA", "value": 268 },
+        { "from": "Home", "to": "Insurance", "value": 74 },
+  
+        { "from": "Income", "to": "Car", "value": 518 },
+        { "from": "Car", "to": "Payment", "value": 350 },
+        { "from": "Car", "to": "Insurance", "value": 80 },
+        { "from": "Car", "to": "AAA", "value": 8 },
+        { "from": "Car", "to": "Gas", "value": 80 },
+  
+        { "from": "Income", "to": "Bills", "value": 388 },
+        { "from": "Bills", "to": "SDGE", "value": 160 },
+        { "from": "Bills", "to": "Water", "value": 80 },
+        { "from": "Bills", "to": "WiFi", "value": 50 },
+        { "from": "Bills", "to": "Streaming", "value": 53 },
+        { "from": "Bills", "to": "Phone", "value": 20 },    
+        { "from": "Bills", "to": "Gym", "value": 25 },
+  
+        { "from": "Income", "to": "Groceries", "value": 800 },
+        { "from": "Income", "to": "CCs", "value": 200 },
+        { "from": "Income", "to": "Savings", "value": 70 }      
+    ]
+  }
+},
   "debt": {
     "months": ["Jan", "Feb", "Mar", "Apr"],
     "cards": {
@@ -39,6 +64,7 @@
     }
   }
 }
+
 
 
 

@@ -145,3 +145,25 @@ function initDebtChart(data) {
       }
     });
   }
+
+function buildDebtToggles() {
+  const container = document.getElementById("debtToggles");
+
+  debtChart.data.datasets.forEach((ds, index) => {
+    const btn = document.createElement("button");
+    btn.textContent = ds.label;
+    btn.classList.add("active");
+
+    btn.onclick = () => {
+      const visible = debtChart.isDatasetVisible(index);
+      debtChart.setDatasetVisibility(index, !visible);
+
+      btn.classList.toggle("active", !visible);
+
+      rescaleYAxis();
+      debtChart.update();
+    };
+
+    container.appendChild(btn);
+  });
+}

@@ -48,7 +48,7 @@ function renderSankey(setKey) {
   }));
 
   const width = document.getElementById("sankey").clientWidth;
-  const height = 800;
+  const height = 840;
   
   svg.attr("viewBox", [0, 0, width, height]);
 
@@ -155,7 +155,7 @@ function renderSankey(setKey) {
         ? d.x1 + 8
         : d.x0 - 8
     )
-    .attr("y", d => (d.y0 + d.y1) / 2 + 10)   // push value below icon
+    .attr("y", d => (d.y0 + d.y1) / 2 + 12)   // push value below icon
     .attr("dy", "0.35em")
     .attr("text-anchor", d =>
       d.x0 < width / 2 ? "start" : "end"
@@ -184,5 +184,6 @@ function renderSankey(setKey) {
     .on("pointerleave", hideTooltip);
 
   }
+
 
 

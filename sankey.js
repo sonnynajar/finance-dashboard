@@ -10,6 +10,26 @@ fetch("data.json")
     renderSankey(currentSet);
   });
 
+function buildToggleBar() {
+  const container = document.getElementById("sankeyToggles");
+
+  Object.keys(sankeyDataSets).forEach(key => {
+    const btn = document.createElement("button");
+    btn.textContent = key;
+    btn.classList.toggle("active", key === currentSet);
+
+    btn.onclick = () => {
+      currentSet = key;
+      document.querySelectorAll(".toggle-bar button")
+        .forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderSankey(key);
+    };
+
+    container.appendChild(btn);
+  });
+}
+
 function renderSankey(setKey) {
   const linksData = sankeyDataSets[setKey].categories;
 
@@ -164,4 +184,5 @@ function renderSankey(setKey) {
     .on("pointerleave", hideTooltip);
 
   }
+
 

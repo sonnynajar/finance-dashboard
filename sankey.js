@@ -48,7 +48,7 @@ function renderSankey(setKey) {
   }));
 
   const width = document.getElementById("sankey").clientWidth;
-  const height = 840;
+  const height = 860;
   
   svg.attr("viewBox", [0, 0, width, height]);
 
@@ -184,6 +184,7 @@ function renderSankey(setKey) {
     .on("pointerleave", hideTooltip);
 
   }
+
 
 
 

@@ -83,36 +83,44 @@ const pointLabelPlugin = {
   }
 };
 
-
 Chart.register(pointLabelPlugin);
+
+let debtChart;
+let rawDebtData;
 
 fetch("data.json")
   .then(res => res.json())
   .then(data => {
-    const ctx = document.getElementById("debtChart");
+    rawDebtData = data;
+    initDebtChart(data);
+    buildDebtToggles();
+  });
 
-    const datasets = Object.entries(data.debt.cards).map(([name, values]) => ({
-      label: name,
-      data: values,
-      borderWidth: 2,
-      tension: 0.3
-    }));
+function initDebtChart(data) {
+  const ctx = document.getElementById("debtChart");
 
-     // Compute monthly totals
-    const cardArrays = Object.values(data.debt.cards);
-    const monthlyTotals = data.debt.months.map((_, i) =>
-      cardArrays.reduce((sum, arr) => sum + arr[i], 0)
-    );
+  const datasets = Object.entries(data.debt.cards).map(([name, values]) => ({
+    label: name,
+    data: values,
+    borderWidth: 2,
+    tension: 0.3
+  }));
 
-    // Add totals dataset
-    datasets.push({
-      label: "Total Debt",
-      data: monthlyTotals,
-      borderWidth: 3,
-      tension: 0.3
-    });
+   // Compute monthly totals
+  const cardArrays = Object.values(data.debt.cards);
+  const monthlyTotals = data.debt.months.map((_, i) =>
+    cardArrays.reduce((sum, arr) => sum + arr[i], 0)
+  );
 
-    new Chart(ctx, {
+  // Add totals dataset
+  datasets.push({
+    label: "Total Debt",
+    data: monthlyTotals,
+    borderWidth: 3,
+    tension: 0.3
+  });
+
+  debtChart = new Chart(ctx, {
       type: "line",
       data: {
         labels: data.debt.months,
@@ -122,9 +130,7 @@ fetch("data.json")
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: {
-            position: "bottom"
-          },
+          legend: { display: false }, // ⛔ disable legend clicks
           pointLabels: {
             color: "#334155",
             font: "12px sans-serif",
@@ -138,6 +144,4 @@ fetch("data.json")
         }
       }
     });
-  });
-
-
+  }

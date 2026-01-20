@@ -96,6 +96,16 @@ fetch("data.json")
     buildDebtToggles();
   });
 
+const palette = [
+  "#6366f1", // indigo
+  "#22c55e", // green
+  "#f59e0b", // amber
+  "#ef4444", // red
+  "#0ea5e9", // blue
+  "#a855f7", // purple
+  "#14b8a6"  // teal
+];
+
 function initDebtChart(data) {
   const ctx = document.getElementById("debtChart");
 
@@ -103,7 +113,9 @@ function initDebtChart(data) {
     label: name,
     data: values,
     borderWidth: 2,
-    tension: 0.3
+    tension: 0.3,
+    borderColor: palette[i % palette.length],
+    backgroundColor: palette[i % palette.length]
   }));
 
    // Compute monthly totals
@@ -117,7 +129,9 @@ function initDebtChart(data) {
     label: "Total Debt",
     data: monthlyTotals,
     borderWidth: 3,
-    tension: 0.3
+    tension: 0.3,
+    borderColor: "#0f172a",
+    backgroundColor: "#0f172a"
   });
 
   debtChart = new Chart(ctx, {
@@ -152,7 +166,14 @@ function buildDebtToggles() {
   debtChart.data.datasets.forEach((ds, index) => {
     const btn = document.createElement("button");
     btn.textContent = ds.label;
-    btn.classList.add("active");
+    btn.classList.add("toggle-btn", "active");
+
+    const color = ds.borderColor;
+
+    // Initial style
+    btn.style.borderColor = color;
+    btn.style.color = color;
+    btn.style.backgroundColor = `${color}15`; // translucent
 
     btn.onclick = () => {
       const visible = debtChart.isDatasetVisible(index);
@@ -160,10 +181,47 @@ function buildDebtToggles() {
 
       btn.classList.toggle("active", !visible);
 
+      if (visible) {
+        // OFF
+        btn.style.backgroundColor = "#f1f5f9";
+        btn.style.color = "#94a3b8";
+        btn.style.borderColor = "#cbd5e1";
+      } else {
+        // ON
+        btn.style.backgroundColor = `${color}15`;
+        btn.style.color = color;
+        btn.style.borderColor = color;
+      }
+
       rescaleYAxis();
       debtChart.update();
     };
 
     container.appendChild(btn);
   });
+}
+
+function rescaleYAxis() {
+  const visibleDatasets = debtChart.data.datasets.filter((_, i) =>
+    debtChart.isDatasetVisible(i)
+  );
+
+  let min = Infinity;
+  let max = -Infinity;
+
+  visibleDatasets.forEach(ds => {
+    ds.data.forEach(v => {
+      if (v === 0) return;
+      min = Math.min(min, v);
+      max = Math.max(max, v);
+    });
+  });
+
+  if (min === Infinity) {
+    min = 0;
+    max = 100;
+  }
+
+  debtChart.options.scales.y.min = min * 0.95;
+  debtChart.options.scales.y.max = max * 1.05;
 }

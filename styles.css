@@ -65,6 +65,22 @@ svg, canvas {
   color: white;
 }
 
+.toggle-btn {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1.5px solid;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:not(.active) {
+  opacity: 0.6;
+}
+
 .chart-wrapper {
   height: 320px; /* desktop */
 }
@@ -87,6 +103,7 @@ svg, canvas {
     margin: auto;
   }
 }
+
 
 
 
